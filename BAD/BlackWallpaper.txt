@@ -1,0 +1,18 @@
+REM =================================
+REM Мгновенная установка черных обоев
+REM =================================
+
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd /C "reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "" /f & rundll32.exe user32.dll,UpdatePerUserSystemParameters"
+ENTER
+DELAY 300
+STRING cmd /C "powershell -command "$color = [System.Drawing.Color]::FromArgb(0,0,0); $bmp = New-Object System.Drawing.Bitmap(1,1); $bmp.SetPixel(0,0,$color); $bmp.Save('C:\black.bmp', 'Bmp');""
+ENTER
+DELAY 300
+STRING cmd /C "reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\black.bmp" /f & rundll32.exe user32.dll,UpdatePerUserSystemParameters"
+ENTER
+DELAY 300
+STRING cmd /C "reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v WallpaperStyle /t REG_SZ /d "0" /f & rundll32.exe user32.dll,UpdatePerUserSystemParameters"
+ENTER

@@ -1,0 +1,15 @@
+REM =================================
+REM Максимальная чувствительность мыши
+REM =================================
+
+DELAY 1000
+GUI r
+DELAY 500
+STRING cmd /C "reg add "HKCU\Control Panel\Mouse" /v MouseSensitivity /t REG_SZ /d 20 /f & reg add "HKCU\Control Panel\Mouse" /v MouseSpeed /t REG_SZ /d 2 /f & reg add "HKCU\Control Panel\Mouse" /v MouseThreshold1 /t REG_SZ /d 0 /f & reg add "HKCU\Control Panel\Mouse" /v MouseThreshold2 /t REG_SZ /d 0 /f"
+ENTER
+DELAY 300
+STRING cmd /C "rundll32.exe user32.dll,UpdatePerUserSystemParameters"
+ENTER
+DELAY 100
+STRING echo Чувствительность мыши установлена на МАКСИМУМ!
+ENTER
